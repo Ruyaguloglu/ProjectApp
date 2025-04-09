@@ -20,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class LoginActivity extends AppCompatActivity {
 
     EditText email,password;
+    // Firebase Authentication için gerekli değişkenler
     private FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,17 +28,18 @@ public class LoginActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
+       // if (getSupportActionBar() != null) {
+           // getSupportActionBar().hide();
+        //}
 
+        // Activity baslatma ve view baglama islemleri
         auth = FirebaseAuth.getInstance();
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
     }
     public void signIn(View view )
     {
-
+        //Kullanıcı giris bilgilerini kontrol et ve firebase ile doğrula
         String userEmail= email.getText().toString();
         String userPassword = password.getText().toString();
 
@@ -57,6 +59,8 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, "Password too short, enter minimum 6 characters!", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        //Firebase ile giriş işlemi ve  MainActivity'ye yönlendirme
         auth.signInWithEmailAndPassword(userEmail,userPassword)
                 .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override

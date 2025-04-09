@@ -46,21 +46,24 @@ public class SliderAdapter extends PagerAdapter {
     };
 
 
-
+//slayt sayısı döner
     @Override
     public int getCount(){
         return headingArray.length;
     }
 
+
+    // view ve object referanslarının aynı görünüme işaret ettiğini konrol ettim
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object){
-        return view == (ConstraintLayout) object;
+        return view == (ConstraintLayout) object; //constraint layout türüne çevrilip doğrulama yapılır
     }
 
     @NonNull
     @Override
+    //slayttaki her bir sayfayı oluşturur
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-
+         //sayfa düzeninin oluşturulması
         layoutInflater = (LayoutInflater)  context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         View view  = layoutInflater.inflate(R.layout.sliding_layout,container,false);
 
@@ -68,6 +71,7 @@ public class SliderAdapter extends PagerAdapter {
         TextView   heading = view.findViewById(R.id.heading);
         TextView description = view.findViewById(R.id.description);
 
+        //içeriğin alınması
         imageView.setImageResource(imagesArray[position]);
         heading.setText(headingArray[position]);
         description.setText(descriptionArray[position]);

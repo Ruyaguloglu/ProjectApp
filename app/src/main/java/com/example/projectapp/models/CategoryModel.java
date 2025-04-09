@@ -2,19 +2,18 @@ package com.example.projectapp.models;
 
 public class CategoryModel {
     private String name;
-    private String image_url;
+    private String type;
+    private String img_url;
 
-    // Boş Constructor (Firebase için gereklidir)
     public CategoryModel() {
     }
 
-    // Parametreli Constructor
-    public CategoryModel(String name, String image_url) {
+    public CategoryModel(String name, String type, String img_url) {
         this.name = name;
-        this.image_url = image_url;
+        this.type = type;
+        this.img_url = img_url;
     }
 
-    // Getter ve Setter Metotları
     public String getName() {
         return name;
     }
@@ -23,11 +22,19 @@ public class CategoryModel {
         this.name = name;
     }
 
-    public String getImage_url() {
-        return image_url;
+    public String getType() {
+        return type;
     }
 
-    public void setImage_url(String image_url) {
-        this.image_url = image_url;
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getImg_url() {
+        return img_url;
+    }
+
+    public void setImg_url(String img_url) {
+        this.img_url = img_url;
     }
 }

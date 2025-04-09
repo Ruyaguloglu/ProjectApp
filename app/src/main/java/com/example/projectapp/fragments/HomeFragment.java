@@ -38,22 +38,17 @@ public class HomeFragment extends Fragment {
 
 
     TextView catShowAll,popularShowAll;
-
-
-
     LinearLayout linearLayout;
     ProgressDialog progressDialog;
     RecyclerView catRecyclerview, newProductRecyclerview,popularRecyclerview;
 
+    // Adapter ve list nesneleri
     CategoryAdapter categoryAdapter;
-
     NewProductsAdapter newProductsAdapter;
     List<CategoryModel> categoryModelList;
-
     List<NewProductsModel> newProductsModelList;
 
     //popular products
-
     PopularProductsAdapter popularProductsAdapter;
     List<PopularProductsModel> popularProductsModelList;
     FirebaseFirestore db;
@@ -65,15 +60,20 @@ public class HomeFragment extends Fragment {
     @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        //Fragment view alanları açılıyor.
+        // XML dosyasını yükleyerek bir görünüm oluştu
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-
+        //kullanıcı dokunursa kapanmayacak
         db = FirebaseFirestore.getInstance();
 
+        //kullanıcıya işlem yapılırken bekleme mesajı gösteriyor.
         progressDialog = new ProgressDialog(getActivity());
+        // RecyclerView'leri root'tan bulma
         catRecyclerview = root.findViewById(R.id.rec_category);
         newProductRecyclerview = root.findViewById(R.id.new_product_rec);
         popularRecyclerview = root.findViewById(R.id.popular_rec);
 
+        // "See All" butonlarını buluyoruz
         catShowAll = root.findViewById(R.id.category_see_all);
         popularShowAll = root.findViewById(R.id.popular_see_all);
 
@@ -98,16 +98,14 @@ public class HomeFragment extends Fragment {
         });
 
 
-
-
-
+        // Image Slider
 
         linearLayout = root.findViewById(R.id.home_layout);
-        linearLayout.setVisibility(View.GONE);
-        // Image Slider
+        linearLayout.setVisibility(View.GONE);//İlk başta görünür değil
+
         ImageSlider imageSlider = root.findViewById(R.id.image_slider);
         List<SlideModel> slideModels = new ArrayList<>();
-
+        // Slider'a görseller ekliyoruz
         slideModels.add(new SlideModel(R.drawable.banner1, "Discount On Shoes Items", ScaleTypes.CENTER_CROP));
         slideModels.add(new SlideModel(R.drawable.banner2, "Discount On Perfume", ScaleTypes.CENTER_CROP));
         slideModels.add(new SlideModel(R.drawable.banner3, "70% OFF", ScaleTypes.CENTER_CROP));
@@ -120,7 +118,7 @@ public class HomeFragment extends Fragment {
         progressDialog.show();
 
 
-        // Category RecyclerView
+        // Category RecyclerView ile firestore dinamik veri yüklemesi
         catRecyclerview.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
         categoryModelList = new ArrayList<>();
         categoryAdapter = new CategoryAdapter(getContext(), categoryModelList);
@@ -132,17 +130,17 @@ public class HomeFragment extends Fragment {
                     if (task.isSuccessful()) {
 
                         for (QueryDocumentSnapshot document : task.getResult()) {
-
+                            //Her belge (document), CategoryModel sınıfına dönüştürülür.
                             CategoryModel categoryModel = document.toObject(CategoryModel.class);
                             categoryModelList.add(categoryModel);
-                            linearLayout.setVisibility(View.VISIBLE);
+                            linearLayout.setVisibility(View.VISIBLE);// Kategoriler yüklendikçe görünür oluyor
 
                             progressDialog.dismiss();
                         }
                         categoryAdapter.notifyDataSetChanged();
                     } else {
                         Toast.makeText(getActivity(), "" + task.getException(), Toast.LENGTH_SHORT).show();
-                        Log.e("Firebase", "Category Error: " + task.getException());
+//                        Log.e("Firebase", "Category Error: " + task.getException());
                     }
                 });
 
@@ -185,7 +183,7 @@ public class HomeFragment extends Fragment {
                         newProductsAdapter.notifyDataSetChanged();
 
                     } else {
-                        Log.e("FirebaseData", "Error getting documents: ", task.getException());
+                        Log.e("FirebaseData", "", task.getException());
                         if (getActivity() != null) {
                             Toast.makeText(getActivity(), "Error loading products", Toast.LENGTH_SHORT).show();
                         }
@@ -193,7 +191,7 @@ public class HomeFragment extends Fragment {
                 });
 
 
-            //Popular Products
+        //Popular Products
         popularRecyclerview.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
         popularProductsModelList = new ArrayList<>();
         popularProductsAdapter = new PopularProductsAdapter(getContext(), popularProductsModelList);

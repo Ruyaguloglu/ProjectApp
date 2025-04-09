@@ -1,77 +1,75 @@
 package com.example.projectapp.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
-import androidx.activity.EdgeToEdge;
+import android.view.Menu;
+import android.view.MenuItem;
+import androidx.appcompat.widget.Toolbar;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-
 import com.example.projectapp.R;
 import com.example.projectapp.fragments.HomeFragment;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.firebase.auth.FirebaseAuth;
+
 
 public class MainActivity extends AppCompatActivity {
 
-    private Fragment homeFragment;
-    private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
+    Fragment homeFragment;
+    FirebaseAuth  auth;
+    Toolbar toolbar;// Menüyü üst çubuğa eklemek için Toolbar
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        // Google Play Services kontrolü
-        if (checkGooglePlayServices()) {
-            // Google Play Services mevcutsa fragment'ı yükle
-            initializeFragment();
-        }
-    }
+        auth = FirebaseAuth.getInstance();
+        //menü özellikleri ekleniyor
+        toolbar = findViewById(R.id.home_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Geri düğmesi etkin
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24);
+        //Toolbar bileşenini uygulamanın üst çubuğu olarak ayarlar.
 
-    private boolean checkGooglePlayServices() {
-        GoogleApiAvailability googleApi = GoogleApiAvailability.getInstance();
-        int result = googleApi.isGooglePlayServicesAvailable(this);
 
-        if (result != ConnectionResult.SUCCESS) {
-            if (googleApi.isUserResolvableError(result)) {
-                googleApi.getErrorDialog(this, result, PLAY_SERVICES_RESOLUTION_REQUEST)
-                        .setOnDismissListener(dialog -> {
-                            // Dialog kapatıldığında tekrar kontrol et
-                            if (googleApi.isGooglePlayServicesAvailable(this) == ConnectionResult.SUCCESS) {
-                                initializeFragment();
-                            } else {
-                                Toast.makeText(this, "Google Play Services gerekli!",
-                                        Toast.LENGTH_LONG).show();
-                            }
-                        });
-
-            } else {
-                Toast.makeText(this, "Bu cihaz Google Play Services desteklemiyor.",
-                        Toast.LENGTH_LONG).show();
-            }
-            return false;
-        }
-        return true;
-    }
-
-    private void initializeFragment() {
         homeFragment = new HomeFragment();
-        loadFragment(homeFragment);
+        loadFragment(homeFragment); //fragment yükleme
+
     }
 
-    private void loadFragment(Fragment fragment) {
+    // Fragment'ı yükleyen yardımcı metod
+    private void loadFragment(Fragment homeFragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.home_container, fragment);
+        transaction.replace(R.id.home_container, homeFragment);// Fragment, belirtilen container'a yerleştiriliyor
         transaction.commit();
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        // Uygulama tekrar açıldığında Google Play Services kontrolü
-        checkGooglePlayServices();
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        //Menü ögelerine tıklama olayları
+        //Derste switch case yapısıyla öğrendik.
+        int id = item.getItemId();
+        if (id == R.id.menu_logout) {
+            auth.signOut();
+            startActivity(new Intent(MainActivity.this, RegistrationActivity.class));
+            finish();
+
+        } else if (id == R.id.menu_my_cart) {
+            //Kullanıcı alışveriş sepetine yönlendiriliyor
+            startActivity(new Intent(MainActivity.this, CartActivity.class));
+
+        }
+        return true;
+
     }
 }
 

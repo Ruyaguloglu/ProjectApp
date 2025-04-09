@@ -18,7 +18,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class RegistrationActivity extends AppCompatActivity {
-
+    // Kayıt işlemi için gerekli değişkenler
     EditText name, email, password;
     private FirebaseAuth auth;
 
@@ -30,12 +30,13 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
+
+         //if (getSupportActionBar() != null) {
+           // getSupportActionBar().hide();
+        //}
 
         auth = FirebaseAuth.getInstance();
-
+        // Mevcut oturum kontrolü - varsa ana sayfaya yönlendir
         if (auth.getCurrentUser() != null) {
             startActivity(new Intent(RegistrationActivity.this, MainActivity.class));
             finish();
@@ -50,9 +51,8 @@ public class RegistrationActivity extends AppCompatActivity {
         name = findViewById(R.id.name);
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
-
+        //İlk kullanım kontrolü - OnBoarding ekranına yönlendirme
         sharedPreferences = getSharedPreferences("onBoardingScreen",MODE_PRIVATE);
-
         boolean isFirstTime = sharedPreferences.getBoolean("firstTime", true);
 
         if(isFirstTime){
@@ -70,6 +70,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     // Signup metodu
     public void signup(View view) {
+        //Firebase ile ilk kullanıcı kaydı
         String userName = name.getText().toString();
         String userEmail = email.getText().toString();
         String userPassword = password.getText().toString();
@@ -93,6 +94,7 @@ public class RegistrationActivity extends AppCompatActivity {
             Toast.makeText(this, "Password too short, enter minimum 6 characters!", Toast.LENGTH_SHORT).show();
             return;
         }
+        //Firebase ile kullanıcı oluşturma ve MainActivity'ye yönlendirme
         auth.createUserWithEmailAndPassword(userEmail, userPassword)
                 .addOnCompleteListener(RegistrationActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -7,93 +8,97 @@
     android:layout_height="match_parent"
     tools:context=".activities.DetailedActivity">
 
-
     <ImageView
         android:id="@+id/detailed_img"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_launcher_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/product_image"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.cardview.widget.CardView
-        android:translationY="-50dp"
-        android:id="@+id/cardview"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/detailed_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="10dp"
-        app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Product Detailed" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:elevation="10dp"
+        android:translationY="-50dp"
+        app:cardCornerRadius="10dp"
         app:layout_constraintTop_toBottomOf="@+id/detailed_img">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight = "20dp">
-            
-         <RelativeLayout
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content">
+            android:padding="20dp">
 
-             <TextView
-                 android:fontFamily="@font/amethysta"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:id="@+id/detailed_name"
-                 android:text="Product Name"
-                 android:textColor="@color/black"
-                 android:textSize="25sp"
-                 android:textStyle="bold"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-             <TextView
-                 android:id="@+id/rating"
-                 android:fontFamily="@font/amethysta"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:text="4.0"
-                 android:textColor="@color/black"
-                 android:layout_toStartOf="@id/my_rating"
-                 android:textSize="16sp"
-                 android:layout_marginTop="8dp" />
+                <TextView
+                    android:id="@+id/detailed_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/amethysta"
+                    android:text="@string/product_name"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    android:textStyle="bold"/>
 
+                <TextView
+                    android:id="@+id/rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4.0"
+                    android:textColor="@color/black"
+                    android:layout_toStartOf="@id/my_rating"
+                    android:textSize="16sp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/amethysta"/>
 
+                <RatingBar
+                    android:id="@+id/my_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:stepSize="0.1"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_alignParentEnd="true" />
 
-             <RatingBar
-                 android:id="@+id/my_rating"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_marginTop="10dp"
-                 android:isIndicator="true"
-                 android:numStars="5"
-                 android:stepSize="0.1"
-                 style="?android:attr/ratingBarStyleSmall"
-                 android:layout_alignParentRight="true" />
-             
-         </RelativeLayout>
-            
+            </RelativeLayout>
+
             <TextView
-                android:fontFamily="@font/amethysta"
                 android:id="@+id/detailed_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="How to add a RatingBar? To con The problem is that the number of stars doesn't seem to do anything"/>
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/amethysta"
+                android:text="@string/product_description"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Price"
-                android:textSize="21sp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/amethysta"
+                android:text="@string/price"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:fontFamily="@font/amethysta"/>
+                android:textSize="21sp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -102,19 +107,19 @@
                 android:gravity="center">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/amethysta"
-                    android:text="$"
-                    android:textColor="@color/purple_700"
-                    android:textStyle="bold" />
-
-                <TextView
                     android:id="@+id/detailed_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/amethysta"
-                    android:text="20"
+                    android:text="20$"
+                    android:textColor="@color/purple_700"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/amethysta"
+                    android:text="@string/currency_symbol"
                     android:textColor="@color/purple_700"
                     android:textStyle="bold" />
 
@@ -122,62 +127,55 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height= "wrap_content"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_horizontal"
                 android:layout_margin="10dp">
 
                 <ImageView
-                    android:layout_marginRight="7dp"
+                    android:id="@+id/remove_item"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/plusicon"
-                    android:id="@+id/add_item"/>
+                    android:contentDescription="@string/remove_item"
+                    android:src="@drawable/iconminus"/>
 
                 <TextView
                     android:id="@+id/quantity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="7dp"
                     android:text="1"
                     android:textSize="30sp"
                     android:textStyle="bold"/>
 
                 <ImageView
-                    android:layout_marginLeft="7dp"
+                    android:id="@+id/add_item"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/iconminus"
-                    android:id="@+id/remove_item"/>
-
-
+                    android:contentDescription="@string/add_item"
+                    android:src="@drawable/plusicon"/>
 
             </LinearLayout>
 
-
-
         </LinearLayout>
 
-
     </androidx.cardview.widget.CardView>
-
 
     <Button
         android:id="@+id/add_to_cart"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/blue"
-        android:drawableLeft="@drawable/mycart"
+        android:drawableStart="@drawable/mycart"
         android:drawableTint="@color/white"
         android:padding="14dp"
         android:text="@string/add_to_cart"
         android:textAllCaps="false"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/buy_now"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardview"
-        app:layout_constraintVertical_bias="0.407"
         app:layout_constraintWidth_percent=".8" />
 
     <Button
@@ -186,7 +184,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="56dp"
         android:backgroundTint="@color/green_button"
-        android:drawableLeft="@drawable/ic_baseline_shopping_cart_24"
+        android:drawableStart="@drawable/ic_baseline_shopping_cart_24"
         android:drawableTint="@color/white"
         android:padding="14dp"
         android:text="@string/buy_now"
@@ -195,8 +193,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_to_cart"
         app:layout_constraintWidth_percent=".8" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

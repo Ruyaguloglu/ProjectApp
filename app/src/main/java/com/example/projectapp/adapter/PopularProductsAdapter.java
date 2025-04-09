@@ -20,22 +20,24 @@ import java.util.List;
 
 public class PopularProductsAdapter extends RecyclerView.Adapter<PopularProductsAdapter.ViewHolder> {
 
-    private Context context;
+    private Context context;//Adaptörün çalıştığı bağlam
     private List<PopularProductsModel> popularProductsModelList;
 
+    //RecyclerView için bir adaptör sınıfı
     public PopularProductsAdapter(Context context, List<PopularProductsModel> popularProductsModelList) {
-        this.context = context;
+        this.context = context; //parametreler sınıf içindeki değişkenlere atanır.
         this.popularProductsModelList = popularProductsModelList;
     }
 
     @NonNull
     @Override
+    // RecyclerView her bir öğesi için bir görünüm (View) oluşturur
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // LayoutInflater kullanımı doğru şekilde yapılıyor
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.popular_items, parent, false);
         return new ViewHolder(view);
     }
-
+//Her bir liste ögesini göstermek için
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // Güncel pozisyondaki model verisini al
@@ -46,11 +48,11 @@ public class PopularProductsAdapter extends RecyclerView.Adapter<PopularProducts
                 .load(currentItem.getImg_url())
                 .into(holder.imageView);
 
-        // Metin alanlarını ayarla
+        // ürün adını ve fiyatını kullanıcıya gösterir
         holder.name.setText(currentItem.getName());
         holder.price.setText(String.valueOf(currentItem.getPrice()));
 
-        // OnClickListener'ı düzelt
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,6 +72,7 @@ public class PopularProductsAdapter extends RecyclerView.Adapter<PopularProducts
         return popularProductsModelList.size();
     }
 
+    //performansı arttırmak için görünüm referansları önbelleğe alınır
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imageView;
@@ -82,8 +85,6 @@ public class PopularProductsAdapter extends RecyclerView.Adapter<PopularProducts
             imageView = itemView.findViewById(R.id.all_img);
             name = itemView.findViewById(R.id.all_product_name);
             price = itemView.findViewById(R.id.all_price);
-
-
 
         }
     }

@@ -1,6 +1,8 @@
 package com.example.projectapp.models;
 
-public class ShowAllModel {
+import java.io.Serializable;
+
+public class ShowAllModel implements Serializable {
 
     String description;
     String name;
@@ -11,6 +13,7 @@ public class ShowAllModel {
 
 
     public ShowAllModel() {
+
     }
 
     public String getDescription() {

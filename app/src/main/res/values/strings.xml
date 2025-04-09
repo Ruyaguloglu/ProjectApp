@@ -19,5 +19,10 @@
     <string name="new_products">New Products</string>
     <string name="buy_now">Buy Now</string>
     <string name="add_to_cart">Add To Cart</string>
-    />
+    <string name="product_image">Product Image</string>
+    <string name="add_item">Add Item</string>
+    <string name="remove_item">Remove Item</string>
+    <string name="product_description" />
+    <string name="currency_symbol" />
+    <string name="total_quantity">Total Quantity</string>
 </resources>
