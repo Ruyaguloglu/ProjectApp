@@ -69,11 +69,6 @@ It can be expanded with features like payment integration, order history, and us
 
 ---
 
-## 📂 Folder Structure (Optional)
-
-You could optionally add this section to show how your project is organized:
-
-
 
 
 
