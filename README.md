@@ -48,21 +48,21 @@ This is a simple, modern e-commerce mobile application built with Android Studio
 
 ## 📷 Screenshots
  
-![Onboarding](Project_Photos/screenshot_onboarding1.png)
+![Onboarding](app/Project_Photos_All/screenshot_onboarding1.png)
 
-![Onboarding2](Project_Photos/screenshot_onboarding2.png) 
+![Onboarding2](app/Project_Photos_All/screenshot_onboarding2.png) 
 
-![Onboarding3](Project_Photos/screenshot_onboarding3.png)
+![Onboarding3](app/Project_Photos_All/screenshot_onboarding3.png)
 
-![SignUp](Project_Photos/screenshot_Sign_Up.png)
+![SignUp](app/Project_Photos_All/screenshot_Sign_Up.png)
 
-![HomePage](Project_Photos/screenshot_Home_Page.png)
+![HomePage](app/Project_Photos_All/screenshot_Home_Page.png)
 
-![Product](Project_Photos/screenshot_product.png)
+![Product](app/Project_Photos_All/screenshot_product.png)
 
-![AllItems](Project_Photos/screenshot_All_Items.png)
+![AllItems](app/Project_Photos_All/screenshot_All_Items.png)
 
-![AddToCart](Project_Photos/screenshot_Add_To_Cart.png)
+![AddToCart](app/Project_Photos_All/screenshot_Add_To_Cart.png)
 
 
 
