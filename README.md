@@ -1,68 +1,79 @@
 # 🛍️ E-Commerce Android App
 
-This is a simple, modern e-commerce mobile application built with Android Studio. The application includes user authentication, product listing, shopping cart functionality, and onboarding screens to guide the user experience.
+A modern and minimalistic **e-commerce mobile application** built with Android Studio.  
+It offers a smooth user experience with onboarding screens, Firebase-based authentication, product listings, and a functional shopping cart.
 
--------------------------------------------------------------
+---
 
-## 🚀 Features
+## ✨ Key Features
 
-### 📱 Onboarding Screens
-- The app opens with 3 onboarding screens that describe the main features and purpose of the application.
-- These screens highlight fast product delivery, secure service, and easy shopping.
-- At the end of the onboarding, the user can tap the **Start** button to proceed.
+### 📱 Onboarding Experience
+- 3 beautifully designed screens introducing the app's benefits
+- Highlights: **Fast Delivery**, **Secure Service**, and **Simple Shopping**
+- Intuitive navigation with a **Start** button to begin
 
-### 👤 Authentication
-- New users can sign up using **Name, Email, and Password**.
-- Existing users can sign in using just **Email and Password**.
-- Authentication is handled securely using **Firebase Authentication**.
+### 👤 Firebase Authentication
+- **Sign Up** with Name, Email & Password
+- **Login** with Email & Password
+- Powered by **Firebase Authentication**
 
-### 🏠 Home Screen
-- Built using `HomeFragment`, this screen includes:
-  - **Toolbar** with an options menu (shopping cart navigation).
-  - A **sliding banner** at the top (auto-moving ads).
-  - Three horizontal `RecyclerViews` for:
-    - **Categories**
-    - **Popular Products**
-    - **New Products**
-
-### 🛒 Shopping Cart
-- Products can be added to the cart by tapping **Add to Cart**.
-- The cart page (`CartActivity`) shows all selected items and calculates the **total price**.
-- Users can add **multiple quantities** of the same product.
+### 🏠 Home Page (`HomeFragment`)
+- Clean toolbar with shopping cart access
+- Auto-sliding **promo banner**
+- Three horizontal carousels:
+  - 🗂️ Categories
+  - 🔥 Popular Products
+  - 🆕 New Arrivals
 
 ### 📦 Product Details
-- Tapping any product opens a detailed screen with:
-  - Product description
-  - **Buy Now** and **Add to Cart** buttons
+- Full-screen product view with:
+  - Description
+  - **Buy Now** and **Add to Cart** options
+
+### 🛒 Shopping Cart
+- View added products in the cart
+- Supports multiple quantities
+- Real-time **total price calculation**
 
 ---
 
-## 🔧 Technologies Used
+## 🛠️ Tech Stack
 
-- **Java**
-- **Android Studio**
-- **Firebase Authentication** (user login & registration)
-- **Firebase Cloud Firestore** (storing and fetching product data)
+- ☕ **Java**
+- 🛠️ **Android Studio**
+- 🔐 **Firebase Authentication**
+- ☁️ **Firebase Cloud Firestore**
 
 ---
 
-## 📷 Screenshots
- 
-![Onboarding](app/Project_Photos_All/screenshot_onboarding1.png)
+## 📸 App Screenshots
 
-![Onboarding2](app/Project_Photos_All/screenshot_onboarding2.png) 
+| Onboarding 1 | Onboarding 2 | Onboarding 3 |
+|:------------:|:------------:|:------------:|
+| ![1](app/Project_Photos_All/screenshot_onboarding.1.png) | ![2](app/Project_Photos_All/screenshot_onboarding2.png) | ![3](app/Project_Photos_All/screenshot_onboarding3.png) |
 
-![Onboarding3](app/Project_Photos_All/screenshot_onboarding3.png)
+| Sign Up | Home | Product |
+|:-------:|:----:|:-------:|
+| ![SignUp](app/Project_Photos_All/screenshot_Sign_Up.png) | ![Home](app/Project_Photos_All/screenshot_Home_Page.png) | ![Product](app/Project_Photos_All/screenshot_product.png) |
 
-![SignUp](app/Project_Photos_All/screenshot_Sign_Up.png)
+| All Items | Add to Cart |
+|:----------:|:------------:|
+| ![AllItems](app/Project_Photos_All/screenshot_All_Items.png) | ![Cart](app/Project_Photos_All/screenshot_Add_To_Cart.png) |
 
-![HomePage](app/Project_Photos_All/screenshot_Home_Page.png)
+---
 
-![Product](app/Project_Photos_All/screenshot_product.png)
+## 📌 About the Project
 
-![AllItems](app/Project_Photos_All/screenshot_All_Items.png)
+This project was developed as part of a **mobile app development course**, focusing on clean architecture, Firebase integration, and a real-world shopping experience.  
+It can be expanded with features like payment integration, order history, and user profiles.
 
-![AddToCart](app/Project_Photos_All/screenshot_Add_To_Cart.png)
+---
+
+## 📂 Folder Structure (Optional)
+
+You could optionally add this section to show how your project is organized:
+
+
 
 
 
