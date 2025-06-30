@@ -30,7 +30,7 @@ It offers a smooth user experience with onboarding screens, Firebase-based authe
   - Description
   - **Buy Now** and **Add to Cart** options
 
-### 🛒 Shopping Cart
+###  Shopping Cart
 - View added products in the cart
 - Supports multiple quantities
 - Real-time **total price calculation**
